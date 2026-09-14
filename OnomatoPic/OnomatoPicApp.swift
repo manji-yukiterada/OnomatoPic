@@ -1,10 +1,10 @@
 import SwiftUI
+import SwiftData
 
 @main
-struct OnomatoPicApp: App {
+struct OnomatoPicApp: App{
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        WindowGroup {ContentView()}
+            .modelContainer(for: [PhotoRecord.self,OnomatopeFinding.self])
     }
 }
