@@ -23,10 +23,17 @@ struct CollectionView: View {
                     ContentUnavailableView("まだカードがありません", systemImage: "rectangle.stack", description: Text("「撮る」から最初の写真を追加できます。"))
                 } else {
                     ScrollView {
-                        LazyVStack(spacing: 18) {
+                        let columns = [
+                            GridItem(.flexible(minimum: 0), spacing: 12),
+                            GridItem(.flexible(minimum: 0), spacing: 12)
+                        ]
+
+                        LazyVGrid(columns: columns, spacing: 12) {
                             ForEach(photos) { photo in
                                 PhotoCardFront(photo: photo)
-                                    .onTapGesture { selectedPhoto = photo }
+                                    .onTapGesture {
+                                        selectedPhoto = photo
+                                    }
                             }
                         }
                         .padding()

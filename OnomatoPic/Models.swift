@@ -14,6 +14,7 @@ final class PhotoRecord{
     var longitude: Double?
     var locationHorizontalAccuracy: Double?
     var locationCapturedAt: Date?
+//    var analysisStatus: String
     
     @Relationship(deleteRule: .cascade, inverse: \OnomatopeFinding.photo)
     var findings: [OnomatopeFinding]
@@ -166,3 +167,21 @@ enum SampleData {
         try? context.save()
     }
 }
+
+//enum ImageFileStore {
+//    static func save(_ data: Data) throws -> String {
+//        let fileName = "\(UUID().uuidString).jpg"
+//        
+//        let folderURL = FileManager.default.urls(
+//                    for: .applicationSupportDirectory,
+//                    in: .userDomainMask
+//                )[0]
+//        
+//        try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
+//        
+//        let fileURL = folderURL.appendingPathComponent(fileName)
+//        try data.write(to: fileURL)
+//        
+//        return fileName
+//    }
+//}
